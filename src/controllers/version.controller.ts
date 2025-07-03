@@ -304,9 +304,6 @@ export class VersionController {
 		try {
 			const { name, version: versionNumber } = request.params
 
-			console.log('name', name)
-			console.log('versionNumber', versionNumber)
-
 			const pipe = await this.pipeService.getPipeByName(name)
 
 			if (!pipe) {
