@@ -131,17 +131,19 @@ export class PipeController {
 				page?: string
 				limit?: string
 				search?: string
+				includeVersions?: string
 			}
 		}>,
 		reply: FastifyReply,
 	) {
 		try {
-			const { page, limit, search } = request.query
+			const { page, limit, search, includeVersions } = request.query
 
 			const options: PipeQueryOptions = {
 				page: page ? parseInt(page) : undefined,
 				limit: limit ? parseInt(limit) : undefined,
 				search,
+				includeVersions: true,
 			}
 
 			const result = await this.pipeService.getPipes(options)

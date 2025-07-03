@@ -59,11 +59,6 @@ The server will be available at `http://localhost:3000`.
 - `PUT /pipes/:id` - Update pipe
 - `DELETE /pipes/:id` - Delete pipe
 
-### Versions
-
-- `GET /pipes/:pipeId/versions` - Get all versions for a pipe
-- `GET /pipes/:pipeId/versions/latest` - Get latest version for a pipe
-
 ## Testing
 
 ### Running Tests
@@ -81,40 +76,6 @@ yarn test:watch
 # Run tests with coverage
 yarn test:coverage
 ```
-
-### Test Database Setup
-
-The integration tests require a separate test database to avoid affecting your development data.
-
-1. Create a test database using Docker:
-```bash
-# Start PostgreSQL container for testing
-docker run --name postgres-test -e POSTGRES_DB=spm_test_db -e POSTGRES_USER=testuser -e POSTGRES_PASSWORD=testpass -p 5433:5432 -d postgres:latest
-
-# Or create manually if you have PostgreSQL installed
-createdb spm_test_db
-```
-
-2. The tests use this database URL: `postgresql://testuser:testpass@localhost:5433/spm_test_db`
-   (This is configured in `vitest.config.ts`)
-
-3. The test database schema will be automatically created when tests run.
-
-### Integration Tests
-
-The integration tests cover the full request-response cycle:
-
-- **Controller Testing**: HTTP request handling and validation
-- **Service Testing**: Business logic and data processing  
-- **Database Testing**: Data persistence and retrieval
-- **Error Handling**: Invalid inputs and edge cases
-
-Key test scenarios:
-- ✅ Creating new pipes with versions
-- ✅ Creating additional versions for existing pipes
-- ✅ Input validation (missing required fields)
-- ✅ Database constraint testing
-- ✅ Edge cases (special characters, long strings)
 
 ## Development
 
