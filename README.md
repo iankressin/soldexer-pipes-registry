@@ -1,4 +1,4 @@
-# SPM (Squid Pipe Manager)
+# SPM (Soldexer Pipe Manager)
 
 A Node.js API for managing pipes and versions built with Fastify, TypeScript, and Drizzle ORM.
 
